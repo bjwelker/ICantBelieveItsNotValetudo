@@ -1,8 +1,8 @@
 FROM node:lts-slim
 
 WORKDIR /app
-
-COPY package.json /app
+RUN wget https://raw.githubusercontent.com/bjwelker/ICantBelieveItsNotValetudo/master/package.json
+RUN mv package.json /app
 
 # Build tools for armhf and arm64 to build canvas
 RUN ARCH=$(dpkg --print-architecture) \ 
