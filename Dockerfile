@@ -2,7 +2,7 @@ FROM node:lts-slim
 
 WORKDIR /app
 
-COPY package.json /app
+ADD https://raw.githubusercontent.com/bjwelker/ICantBelieveItsNotValetudo/master/package.json /app
 
 # Build tools for armhf and arm64 to build canvas
 RUN ARCH=$(dpkg --print-architecture) \ 
