@@ -1,8 +1,7 @@
 FROM node:lts-slim
 
 WORKDIR /app
-RUN wget https://raw.githubusercontent.com/bjwelker/ICantBelieveItsNotValetudo/master/package.json
-RUN mv package.json /app
+
 
 # Build tools for armhf and arm64 to build canvas
 RUN ARCH=$(dpkg --print-architecture) \ 
@@ -14,9 +13,17 @@ RUN ARCH=$(dpkg --print-architecture) \
     libjpeg-dev \
     libgif-dev \
     librsvg2-dev \
+    wget \
+    unzip \
+    vi \
     && rm -rf /var/lib/apt/lists/* \
     ;  fi
 
+RUN wget https://github.com/bjwelker/ICantBelieveItsNotValetudo/archive/refs/heads/master.zip
+RUN unzip master.zip
+RUN mv ICantBelieveItsNotValetudo-master/* .
+RUN rm master.zip
+RUN rm -r ICantBelieveItsNotValetudo-master
 RUN npm install
 COPY . /app
 
