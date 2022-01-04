@@ -15,7 +15,7 @@ RUN ARCH=$(dpkg --print-architecture) \
     librsvg2-dev \
     wget \
     unzip \
-    vi \
+    nano \
     && rm -rf /var/lib/apt/lists/* \
     ;  fi
 
